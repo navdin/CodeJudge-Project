@@ -1,8 +1,12 @@
 package org.codejudge.sb.models;
 
 import com.fasterxml.jackson.annotation.JsonTypeId;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.EntityListeners;
 
 //@Entity
+//@EntityListeners(AuditingEntityListener.class)
 public class Product {
 
 
@@ -21,7 +25,7 @@ public class Product {
     }
 
     //    @Id
-//    @Generated(strategy=GenerationType.Auto)
+//    @GeneratedValue(strategy=GenerationType.Auto)
     private int id;
     private String name;
     private String category;
