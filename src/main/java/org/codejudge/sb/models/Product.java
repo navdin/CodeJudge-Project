@@ -1,9 +1,9 @@
 package org.codejudge.sb.models;
 
 import com.fasterxml.jackson.annotation.JsonTypeId;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+//import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.EntityListeners;
+//import javax.persistence.EntityListeners;
 
 //@Entity
 //@EntityListeners(AuditingEntityListener.class)
@@ -14,7 +14,7 @@ public class Product {
     }
 
     public Product(int id, String name, String category, String description, String buy_price, String sell_price,
-                   String quantity) {
+                   Integer quantity) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -32,7 +32,7 @@ public class Product {
     private String description;
     private String buy_price;
     private String sell_price;
-    private String quantity;
+    private Integer quantity;
 
     public int getId() {
         return id;
@@ -82,11 +82,11 @@ public class Product {
         this.sell_price = sell_price;
     }
 
-    public String getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 }

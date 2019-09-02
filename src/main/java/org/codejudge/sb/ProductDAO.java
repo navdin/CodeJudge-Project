@@ -1,18 +1,19 @@
 package org.codejudge.sb;
 
 import org.codejudge.sb.models.Product;
-import org.graalvm.compiler.core.common.Fields;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
+@Service
 public class ProductDAO {
 
 //    @Autowired
 //    ProductJpa prodJpa;
 
-    int c=0;
+
     HashMap<Integer, Product> hm=new HashMap<Integer, Product>();
 
     public Product getProd(int id){
@@ -22,7 +23,7 @@ public class ProductDAO {
 
     }
 
-    public Product save(Product p){
+    public Product save(Product p, int c){
 
 //        prodJpa.save(p);
 
@@ -32,11 +33,14 @@ public class ProductDAO {
         return p;
     }
 
-    public Boolean update(int id, Product p){
+    public String update(int id, Product p){
 
         Product ps=hm.get(id);
         if(ps==null){
-            return false;
+            return null;
+        }
+        if(p.getQuantity()<0){
+            return "q";
         }
         if(p.getName()!=null){
             ps.setName(p.getName());
@@ -55,7 +59,7 @@ public class ProductDAO {
         }
 
 
-        return true;
+        return "t";
 //        Field[] fields=p.getClass().getDeclaredFields();
 //        for(Field f: fields){
 //            if(f.get(p)!=null){
